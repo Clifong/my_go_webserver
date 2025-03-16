@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"snippetbox.clif.net/cmd/internals/models"
-	"snippetbox.clif.net/cmd/internals/validator"
+	"snippetbox.clif.net/internals/models"
+	"snippetbox.clif.net/internals/validator"
 )
 
 type snippetCreateForm struct {
@@ -216,4 +216,8 @@ func (app *application) userLogoutPost(w http.ResponseWriter, r *http.Request) {
 	app.sessionManager.Put(r.Context(), "flash", "You've been logged out successfully!")
 
 	http.Redirect(w, r, "/", http.StatusSeeOther)
+}
+
+func ping(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("OK"))
 }

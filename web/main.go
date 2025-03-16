@@ -14,7 +14,7 @@ import (
 	"github.com/alexedwards/scs/v2"
 	"github.com/go-playground/form/v4"
 	_ "github.com/go-sql-driver/mysql"
-	"snippetbox.clif.net/cmd/internals/models"
+	"snippetbox.clif.net/internals/models"
 )
 
 type application struct {
@@ -84,7 +84,7 @@ func main() {
 
 	logger.Info("starting server", slog.Any("addr", *addr))
 
-	err = srv.ListenAndServeTLS("../../tls/cert.pem", "../../tls/key.pem")
+	err = srv.ListenAndServeTLS("../tls/cert.pem", "../tls/key.pem")
 	logger.Error(err.Error())
 	os.Exit(1)
 }
